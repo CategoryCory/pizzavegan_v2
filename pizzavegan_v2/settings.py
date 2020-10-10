@@ -57,6 +57,7 @@ INSTALLED_APPS = [
 
     # Local
     'users.apps.UsersConfig',
+    'pages.apps.PagesConfig',
 ]
 
 MIDDLEWARE = [
@@ -171,6 +172,9 @@ ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
+
+LOGIN_REDIRECT_URL = 'pages:home'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'pages:home'
 
 # Crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
