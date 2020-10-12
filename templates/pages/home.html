@@ -1,5 +1,46 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
-<h1>This is the home page.</h1>
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <h2 class="display-3 responsive-header">Pizza Vegan Community</h2>
+            <p class="lead responsive-lead">Vegan pizza at your fingertips&mdash;literally!</p>
+        </div>
+    </div>
+</div>
+<div class="homepage-banner">
+    <div class="homepage-banner__textblock">
+        <h2 class="display-4">Welcome!</h2>
+        <p>
+            Vegan pizza has never been more popular than it is now with 25% of customers looking for more vegan options
+            in pizza, but only 25% of pizzerias are offering it. PMQ Pizza Magazine is building a website community and
+            national campaign to bring more attention and consumers closer to vegan pizza very soon!
+        </p>
+        <hr>
+        <p class="lead">Are you a...</p>
+        <button type="button" class="homepage-banner__button" data-toggle="modal" data-target="#emailSignup">
+            Vegan That Loves Pizza
+        </button>
+        <a href="#" class="homepage-banner__button">Pizzeria Owner</a>
+    </div>
+</div>
+
+<div class="modal fade" id="emailSignup" tabindex="-1" aria-labelledby="emailSignupLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">The Header</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium debitis, expedita explicabo iste iusto nam neque rem repellendus repudiandae veritatis.</p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
