@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as messages
 import environ
 
 env = environ.Env(
@@ -179,3 +180,8 @@ ACCOUNT_LOGOUT_REDIRECT_URL = 'pages:home'
 
 # Crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
