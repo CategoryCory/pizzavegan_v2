@@ -88,9 +88,14 @@
             <p class="text-muted">
                 <strong>If you do not have Facebook available right now,</strong> just fill in the form below.
             </p>
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form|crispy }}
+                <p class="text-small text-muted">
+                    In order to participate, you must be a subscriber to PMQ Pizza Magazine. If you are not,
+                    please <a href="https://www.pmq.com/Subscribe-PMQ/" class="primary-link">click here</a> to fill
+                    out the subscription form.
+                </p>
                 <button type="submit" class="btn btn-outline-success btn-block">Submit</button>
             </form>
         </div>
