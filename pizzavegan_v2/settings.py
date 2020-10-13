@@ -36,7 +36,7 @@ DEBUG = env('DEBUG')
 if DEBUG is True:
     ALLOWED_HOSTS = []
 else:
-    ALLOWED_HOSTS = ['pizzavegan.com', 'www.pizzavegan.com', ]
+    ALLOWED_HOSTS = ['pizzavegan.com', 'www.pizzavegan.com', '68.183.109.222', ]
 
 
 # Application definition
