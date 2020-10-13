@@ -14,7 +14,8 @@
     font-size: calc(1rem + 1vw);
 }
 
-.primary-link {
+.primary-link,
+.primary-text {
     color: var(--primary-color);
 }
 

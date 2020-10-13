@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.views.generic import CreateView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse_lazy
 
-from contacts.forms import SurveyResponseForm
+from contacts.forms import SurveyResponseForm, TapTheTableForm
 
 
 def homepage_view(request):
@@ -31,3 +34,11 @@ def homepage_view(request):
     }
 
     return render(request, 'pages/home.html', context)
+
+
+class TapTheTableSignupView(SuccessMessageMixin, CreateView):
+    form_class = TapTheTableForm
+    template_name = 'pages/tap-the-table.html'
+    success_url = reverse_lazy('pages:tap-the-table')
+    success_message = 'Your submission has been received! You will receive an email confirmation with additional ' \
+                      'information and steps. '
