@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+from tinymce.models import HTMLField
 
 CustomUser = get_user_model()
 
@@ -17,7 +18,7 @@ class Article(models.Model):
     title = models.CharField(max_length=200, unique=True)
     subtitle = models.CharField(max_length=255)
     slug = models.SlugField(max_length=200, unique=True)
-    body = models.TextField()
+    body = HTMLField()
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='article_posts')
     featured_image = models.ImageField(upload_to='images/', blank=True)
     featured_image_caption = models.TextField(blank=True)
