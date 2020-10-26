@@ -187,3 +187,12 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+# TinyMCE
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': 'lists advlist link autolink image code help wordcount',
+    'toolbar': 'undo redo | styleselect | bold italic underline backcolor forecolor | alignleft aligncenter '
+               'alignright alignjustify | bullist numlist indent outdent | link image code wordcount help',
+    'menubar': 'edit view insert format tools help',
+}
+TINYMCE_SPELLCHECKER = True
