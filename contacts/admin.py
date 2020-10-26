@@ -4,7 +4,8 @@ from .models import TapTheTableResponse, SurveyResponse
 
 
 class TapTheTableResponseAdmin(admin.ModelAdmin):
-    list_display = ['restaurant_name', 'email_address', 'facebook_page', 'is_subscriber', ]
+    list_display = ['restaurant_name', 'email_address', 'facebook_page', 'is_subscriber', 'is_approved', ]
+    list_editable = ['is_approved', ]
     search_fields = ['restaurant_name', ]
     list_per_page = 25
 

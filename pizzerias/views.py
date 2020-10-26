@@ -8,6 +8,7 @@ class PizzeriaList(ListView):
 
     model = TapTheTableResponse
     template_name = 'pizzerias/pizzeria_list.html'
+    queryset = TapTheTableResponse.objects.filter(is_approved=True)
 
 
 class PizzeriaDetail(DetailView):
