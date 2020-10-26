@@ -12,7 +12,11 @@
         </div>
         {% for pizzeria in tapthetableresponse_list %}
             <article class="col-12 col-md-6 col-lg-4 d-flex flex-column mt-3 mb-5">
-                <img src="{{ pizzeria.pizza_photo.url }}" alt="{{ pizzeria.restaurant_name }}" class="articles-list-image rounded" />
+                {% if pizzeria.pizza_photo %}
+                    <img src="{{ pizzeria.pizza_photo.url }}" alt="{{ pizzeria.restaurant_name }}" class="articles-list-image rounded" />
+                {% else %}
+                    <img src="{% static 'images/pizzavegan-color.png' %}" alt="{{ pizzeria.restaurant_name }}" class="articles-list-default-image rounded">
+                {% endif %}
                 <h4 class="articles-list-post-title mt-3">
                     <a href="{% url 'pizzerias:pizzeria_detail' pizzeria.id %}" class="text-success">
                         {{ pizzeria.restaurant_name }}
@@ -23,6 +27,8 @@
                     View Page
                 </a>
             </article>
+        {% empty %}
+            <p>Sorry, there are no pizzerias listed at this time.</p>
         {% endfor %}
     </div>
 </main>
