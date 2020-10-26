@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     # Local
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
+    'pizzerias.apps.PizzeriasConfig',
     'contacts.apps.ContactsConfig',
     'articles.apps.ArticlesConfig',
 ]

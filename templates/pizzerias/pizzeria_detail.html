@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+    <main class="container-fluid my-5 px-5">
+        <div class="row justify-content-center">
+            <article class="col-10 col-md-7 col-lg-5">
+                <div class="article-header-image mb-4 shadow">
+                    <img src="{{ pizzeria.pizza_photo.url }}" class="rounded" />
+                </div>
+                <div class="article-title mb-4 border-bottom">
+                    <h2 class="text-success display-4 font-weight-bold">{{ pizzeria.restaurant_name }}</h2>
+                    <p class="lead h5">{{ pizzeria.vegan_pizza_type }}</p>
+                </div>
+                <div class="article-body">
+                    <div class="my-3">
+                        <p>{{ pizzeria.menu_description }}</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+{% endblock content %}

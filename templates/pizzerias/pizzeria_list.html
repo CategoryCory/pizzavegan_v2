@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} | Pizzerias{% endblock title %}
+
+{% block content %}
+<main class="container my-5 px-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="font-italic">Vegan Pizzerias</h1>
+            <hr>
+        </div>
+        {% for pizzeria in tapthetableresponse_list %}
+            <article class="col-12 col-md-6 col-lg-4 d-flex flex-column mt-3 mb-5">
+                <img src="{{ pizzeria.pizza_photo.url }}" alt="{{ pizzeria.restaurant_name }}" class="articles-list-image rounded" />
+                <h4 class="articles-list-post-title mt-3">
+                    <a href="{% url 'pizzerias:pizzeria_detail' pizzeria.id %}" class="text-success">
+                        {{ pizzeria.restaurant_name }}
+                    </a>
+                </h4>
+                <p>{{ pizzeria.vegan_pizza_type }}</p>
+                <a href="{% url 'pizzerias:pizzeria_detail' pizzeria.id %}" class="btn btn-outline-success btn-block mt-auto">
+                    View Page
+                </a>
+            </article>
+        {% endfor %}
+    </div>
+</main>
+{% endblock content %}
