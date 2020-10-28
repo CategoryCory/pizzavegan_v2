@@ -4,7 +4,7 @@ from django.views.generic import TemplateView, CreateView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 
-from contacts.forms import SurveyResponseForm, TapTheTableForm
+from contacts.forms import SurveyResponseForm, TapTheTableForm, ContactUsForm
 
 
 def homepage_view(request):
@@ -46,3 +46,10 @@ class TapTheTableSignupView(SuccessMessageMixin, CreateView):
 
 class AboutView(TemplateView):
     template_name = 'pages/about.html'
+
+
+class ContactUsView(SuccessMessageMixin, CreateView):
+    form_class = ContactUsForm
+    template_name = 'pages/contact.html'
+    success_url = reverse_lazy('pages:contact_us')
+    success_message = 'Thank you for contacting us! We will read your message and respond soon!'

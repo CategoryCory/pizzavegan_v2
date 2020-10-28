@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import TapTheTableResponse, SurveyResponse
+from .models import TapTheTableResponse, SurveyResponse, ContactUsResponse
 
 
 class TapTheTableResponseAdmin(admin.ModelAdmin):
@@ -14,5 +14,10 @@ class SurveyResponseAdmin(admin.ModelAdmin):
     list_display = ['email', 'pizza_description', ]
 
 
+class ContactUsResponseAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', ]
+
+
 admin.site.register(TapTheTableResponse, TapTheTableResponseAdmin)
 admin.site.register(SurveyResponse, SurveyResponseAdmin)
+admin.site.register(ContactUsResponse, ContactUsResponseAdmin)
