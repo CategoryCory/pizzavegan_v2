@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.views.generic import CreateView
+from django.views.generic import TemplateView, CreateView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 
@@ -42,3 +42,7 @@ class TapTheTableSignupView(SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('pages:tap-the-table')
     success_message = 'Your submission has been received! You will receive an email confirmation with additional ' \
                       'information and steps. '
+
+
+class AboutView(TemplateView):
+    template_name = 'pages/about.html'
