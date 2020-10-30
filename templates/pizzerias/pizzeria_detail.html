@@ -30,7 +30,38 @@
                         {% endif %}
                     </div>
                 </div>
+                <div id="pizzeria-map"></div>
             </article>
         </div>
     </main>
 {% endblock content %}
+
+{% block extrascripts %}
+<script>
+    function initMap() {
+        const pizzeriaLatitude = {{ pizzeria.latitude }};
+        const pizzeriaLongitude = {{ pizzeria.longitude }};
+        const pizzeriaName = "{{ pizzeria.restaurant_name }}";
+
+        const listingPosition = { lat: pizzeriaLatitude, lng: pizzeriaLongitude };
+        const mapCenter = listingPosition;
+
+        const mapDiv = document.getElementById('pizzeria-map');
+        const mapOptions = {
+            zoom: 13,
+            center: mapCenter
+        };
+        const map = new google.maps.Map(mapDiv, mapOptions);
+
+        const pizzeriaMarker = new google.maps.Marker({
+            position: listingPosition,
+            map: map,
+            title: pizzeriaName
+        });
+    }
+</script>
+<script
+    defer
+    src="https://maps.googleapis.com/maps/api/js?key={{ maps_api_key }}&callback=initMap">
+</script>
+{% endblock extrascripts %}

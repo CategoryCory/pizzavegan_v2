@@ -1,5 +1,7 @@
 from django.db import models
 
+from .helpers import geocode_address
+
 
 class TapTheTableResponse(models.Model):
     restaurant_name = models.CharField(max_length=200)
@@ -9,6 +11,8 @@ class TapTheTableResponse(models.Model):
     city = models.CharField(max_length=50, blank=True)
     state = models.CharField(max_length=30, blank=True)
     zip_code = models.CharField(max_length=15, blank=True)
+    latitude = models.DecimalField(max_digits=9, decimal_places=6, default=0)
+    longitude = models.DecimalField(max_digits=9, decimal_places=6, default=0)
     vegan_pizza_type = models.CharField(max_length=200)
     menu_description = models.TextField(blank=True)
     facebook_page = models.CharField(max_length=200, blank=True)
@@ -24,6 +28,15 @@ class TapTheTableResponse(models.Model):
 
     def __str__(self):
         return self.restaurant_name
+
+    def save(self, *args, **kwargs):
+        try:
+            lat_lng = geocode_address(self.street_address1, self.city, self.state)
+            self.latitude = lat_lng['lat']
+            self.longitude = lat_lng['lng']
+        except Exception as e:
+            print(f'Geocoding failed for {self.restaurant_name}')
+        super(TapTheTableResponse, self).save(*args, **kwargs)
 
 
 class SurveyResponse(models.Model):

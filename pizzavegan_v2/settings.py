@@ -197,3 +197,8 @@ TINYMCE_DEFAULT_CONFIG = {
     'menubar': 'edit view insert format tools help',
 }
 TINYMCE_SPELLCHECKER = True
+
+# Google APIs
+MAPS_API_KEY = env('MAPS_API_KEY')
+GEOCODING_API_KEY = env('GEOCODING_API_KEY')
+DISTANCE_API_KEY = env('DISTANCE_API_KEY')
