@@ -4,10 +4,23 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from . import models, forms
 
 
+class RecipeListView(ListView):
+
+    model = models.Article
+    template_name = 'articles/recipe_list.html'
+    queryset = models.Article.objects.filter(status='published', type='cat_recipe').order_by('-created_on')
+
+
+class RecipeDetailView(DetailView):
+
+    model = models.Article
+    template_name = 'articles/recipe_detail.html'
+
+
 class ArticleListView(ListView):
 
     model = models.Article
-    queryset = models.Article.objects.filter(status='published').order_by('-created_on')
+    queryset = models.Article.objects.filter(status='published', type='cat_article').order_by('-created_on')
 
 
 class ArticleDetailView(DetailView):

@@ -10,9 +10,17 @@ class Article(models.Model):
     DRAFT = 'draft'
     PUBLISHED = 'published'
 
+    CAT_ARTICLE = 'cat_article'
+    CAT_RECIPE = 'cat_recipe'
+
     ARTICLE_STATUS_CHOICES = [
         (DRAFT, 'Draft'),
         (PUBLISHED, 'Published')
+    ]
+
+    ARTICLE_TYPE_CHOICES = [
+        (CAT_ARTICLE, 'Article'),
+        (CAT_RECIPE, 'Recipe'),
     ]
 
     title = models.CharField(max_length=200, unique=True)
@@ -25,6 +33,7 @@ class Article(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=20, choices=ARTICLE_STATUS_CHOICES, default=DRAFT)
+    type = models.CharField(max_length=20, choices=ARTICLE_TYPE_CHOICES, default=CAT_ARTICLE)
 
     class Meta:
         ordering = ['-created_on']

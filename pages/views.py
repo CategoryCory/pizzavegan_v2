@@ -9,7 +9,7 @@ from articles.models import Article
 
 
 def homepage_view(request):
-    articles_list = Article.objects.all().order_by('-created_on')[:5]
+    articles_list = Article.objects.filter(type='cat_article').order_by('-created_on')[:5]
 
     context = {
         'articles_list': articles_list
