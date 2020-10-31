@@ -29,22 +29,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item ml-3">
-                    <a href="{% url 'pages:home' %}" class="nav-item nav-link">Home</a>
+                    <a href="{% url 'pages:about' %}" class="nav-item nav-link">Why PizzaVegan?</a>
+                </li>
+                <li class="nav-item ml-3">
+                    <a href="{% url 'pages:meet-the-editor' %}" class="nav-item nav-link">Meet the Editor</a>
+                </li>
+                <li class="nav-item ml-3">
+                    <a href="{% url 'pizzerias:pizzeria_list' %}" class="nav-item nav-link">Find Vegan Pizza</a>
                 </li>
                 <li class="nav-item ml-3">
                     <a href="{% url 'articles:articles_list' %}" class="nav-item nav-link">Articles</a>
                 </li>
                 <li class="nav-item ml-3">
-                    <a href="{% url 'pizzerias:pizzeria_list' %}" class="nav-item nav-link">Directory</a>
-                </li>
-                <li class="nav-item ml-3">
-                    <a href="{% url 'pages:about' %}" class="nav-item nav-link">About</a>
-                </li>
-                <li class="nav-item ml-3">
                     <a href="{% url 'pages:contact_us' %}" class="nav-item nav-link">Contact Us</a>
-                </li>
-                <li class="nav-item ml-3">
-                    <a href="https://www.pmq.com" class="nav-item nav-link" target="_blank">PMQ Pizza Magazine</a>
                 </li>
             </ul>
         </div>

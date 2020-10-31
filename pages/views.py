@@ -48,6 +48,10 @@ class AboutView(TemplateView):
     template_name = 'pages/about.html'
 
 
+class MeetEditorView(TemplateView):
+    template_name = 'pages/meet-the-editor.html'
+
+
 class ContactUsView(SuccessMessageMixin, CreateView):
     form_class = ContactUsForm
     template_name = 'pages/contact.html'
