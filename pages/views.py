@@ -5,32 +5,14 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 
 from contacts.forms import SurveyResponseForm, TapTheTableForm, ContactUsForm
+from articles.models import Article
 
 
 def homepage_view(request):
-    if request.method == 'POST':
-        form = SurveyResponseForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-            messages.add_message(
-                request,
-                messages.SUCCESS,
-                'Thank you for signing up! We will let you know when we officially launch!'
-            )
-            return redirect('pages:home')
-        else:
-            messages.add_message(
-                request,
-                messages.ERROR,
-                'There was a problem signing up. Please try again later.'
-            )
-            return redirect('pages:home')
-    else:
-        form = SurveyResponseForm()
+    articles_list = Article.objects.all().order_by('-created_on')[:5]
 
     context = {
-        'form': form,
+        'articles_list': articles_list
     }
 
     return render(request, 'pages/home.html', context)
@@ -57,3 +39,32 @@ class ContactUsView(SuccessMessageMixin, CreateView):
     template_name = 'pages/contact.html'
     success_url = reverse_lazy('pages:contact_us')
     success_message = 'Thank you for contacting us! We will read your message and respond soon!'
+
+
+def pizzavegan_signup_view(request):
+    if request.method == 'POST':
+        form = SurveyResponseForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                'Thank you for signing up! We will let you know when we officially launch!'
+            )
+            return redirect('pages:pizzavegan-signup')
+        else:
+            messages.add_message(
+                request,
+                messages.ERROR,
+                'There was a problem signing up. Please try again later.'
+            )
+            return redirect('pages:pizzavegan-signup')
+    else:
+        form = SurveyResponseForm()
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'pages/pizzavegan-signup.html', context)

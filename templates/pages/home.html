@@ -7,51 +7,30 @@
 <div class="container my-4">
     <div class="row justify-content-center">
         <div class="col-10">
-            <h2 class="display-3 responsive-header">Pizza Vegan Community</h2>
-{#            <p class="lead responsive-lead">Vegan pizza at your fingertips&mdash;literally!</p>#}
-            <p class="lead responsive-lead">Opening on World Vegan Day, November 1, 2020!</p>
+            <h2 class="responsive-header primary-text">Pizza Vegan Community</h2>
+            <p class="lead responsive-lead">Vegan pizza at your fingertips&mdash;literally!</p>
         </div>
-    </div>
-</div>
-{% include 'partials/_alerts.html' %}
-<div class="homepage-banner">
-    <div class="homepage-banner__textblock">
-        <h2 class="display-4">Welcome!</h2>
-        <p>
-            Vegan pizza has never been more popular than it is now with 25% of customers looking for more vegan options
-            in pizza, but only 25% of pizzerias are offering it. PMQ Pizza Magazine is building a website community and
-            national campaign to bring more attention and consumers closer to vegan pizza very soon!
-        </p>
-        <hr>
-        <p class="lead">Are you a...</p>
-        <button type="button" class="homepage-banner__button" data-toggle="modal" data-target="#emailSignup">
-            Vegan That Loves Pizza
-        </button>
-        <a href="{% url 'pages:tap-the-table' %}" class="homepage-banner__button">Pizzeria Owner</a>
     </div>
 </div>
 
-<div class="modal fade" id="emailSignup" tabindex="-1" aria-labelledby="emailSignupLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <img src="{% static 'images/pizzavegan-color-small.png' %}" alt="PizzaVegan Coming Soon">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body p-5">
-                <p>
-                    <strong>Are you vegan and obsessed with pizza?</strong> This will soon be the place for
-                    you! Visit us on our opening day, World Vegan Day, November 1!
-                </p>
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <button type="submit" class="btn btn-success btn-block">Sign Up</button>
-                </form>
-            </div>
+    <div class="container my-4">
+        <div class="row">
+            {% for article in articles_list %}
+                <article class="col-12 col-md-6 col-lg-4 d-flex flex-column mt-3 mb-5">
+                    <img src="{{ article.featured_image.url }}" alt="{{ article.title }}" class="articles-list-image rounded" />
+                    <h4 class="articles-list-post-title mt-3">
+                        <a href="{% url 'articles:article_detail' article.slug %}" class="text-success">
+                            {{ article.title }}
+                        </a>
+                    </h4>
+                    <p class="articles-list-post-meta mt-1">Posted on {{ article.created_on|date:'F j, Y' }}</p>
+                    <p>{{ article.subtitle }}</p>
+                    <a href="{% url 'articles:article_detail' article.slug %}" class="btn btn-outline-success btn-block mt-auto">
+                        Read More
+                    </a>
+                </article>
+            {% endfor %}
         </div>
     </div>
-</div>
+
 {% endblock content %}

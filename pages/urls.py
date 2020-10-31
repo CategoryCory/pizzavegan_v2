@@ -1,6 +1,7 @@
 from django.urls import path
 
-from .views import homepage_view, TapTheTableSignupView, AboutView, MeetEditorView, ContactUsView
+from .views import homepage_view, TapTheTableSignupView, AboutView, MeetEditorView, ContactUsView, \
+    pizzavegan_signup_view
 
 app_name = 'pages'
 urlpatterns = [
@@ -9,4 +10,5 @@ urlpatterns = [
     path('about/', AboutView.as_view(), name='about'),
     path('meet-the-editor/', MeetEditorView.as_view(), name='meet-the-editor'),
     path('contact/', ContactUsView.as_view(), name='contact_us'),
+    path('pizzavegan-signup/', pizzavegan_signup_view, name='pizzavegan-signup'),
 ]
