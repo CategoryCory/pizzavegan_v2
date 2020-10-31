@@ -177,6 +177,11 @@ nav.navbar {
     background-repeat: no-repeat;
 }
 
-#pizzeria-map {
+#pizzeria-map,
+#pizzeria-list-map {
     height: 500px;
+}
+
+.sticky-offset {
+    top: 7.5rem;
 }

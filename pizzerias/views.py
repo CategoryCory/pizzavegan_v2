@@ -11,6 +11,11 @@ class PizzeriaList(ListView):
     template_name = 'pizzerias/pizzeria_list.html'
     queryset = TapTheTableResponse.objects.filter(is_approved=True)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['maps_api_key'] = settings.MAPS_API_KEY
+        return context
+
 
 class PizzeriaDetail(DetailView):
 
